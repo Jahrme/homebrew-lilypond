@@ -27,8 +27,6 @@ class Lilypond < Formula
   depends_on "texinfo"
   depends_on "texlive-ly"
 
-  depends_on :x11
-
   resource "texgyre" do
     url "http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip"
     sha256 "d7f8be5317bec4e644cf16c5abf876abeeb83c43dbec0ccb4eee4516b73b1bbe"
