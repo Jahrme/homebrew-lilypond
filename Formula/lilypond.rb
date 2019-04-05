@@ -80,9 +80,19 @@ class Lilypond < Formula
       "--prefix=#{prefix}",
       "--enable-rpath",
       "--disable-documentation",
+    ]
+
+    args_stable = [
       "--with-ncsb-dir=#{Formula["ghostscript"].share}/ghostscript/fonts/",
+    ]
+
+    args_devel = [
       "--with-texgyre-dir=#{texgyre_dir}",
     ]
+
+    args += args_stable if build.stable?
+    args += args_devel if build.devel?
+
     system "./configure", *args
     system "make", "all"
     system "make", "install"
