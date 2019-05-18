@@ -10,7 +10,7 @@ class Lilypond < Formula
   end
 
   # Dependencies for LilyPond
-  depends_on "flex" => :build
+  depends_on "flex@2.5.37" => :build
   depends_on "pkg-config" => :build
 
   depends_on "docbook"

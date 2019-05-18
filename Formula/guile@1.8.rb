@@ -5,20 +5,21 @@ class GuileAT18 < Formula
   mirror "https://ftpmirror.gnu.org/gnu/guile/guile-1.8.8.tar.gz"
   sha256 "c3471fed2e72e5b04ad133bbaaf16369e8360283679bcf19800bc1b381024050"
 
+  depends_on "pkg-config" => :build
+
   depends_on "bdw-gc"
   depends_on "gmp"
   depends_on "libffi"
   depends_on "libtool"
   depends_on "libunistring"
-  depends_on "pkg-config"
   depends_on "readline"
 
   def install
     args = [
-      "--disable-dependency-tracking",
       "--prefix=#{prefix}",
       "--with-libgmp-prefix=#{Formula["gmp"].opt_prefix}",
       "--with-libreadline-prefix=#{Formula["readline"].prefix}",
+      "--without-threads",
     ]
     system "./configure", *args
     system "make", "all"
