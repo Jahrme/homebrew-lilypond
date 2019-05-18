@@ -1,5 +1,6 @@
+language: minimal
 os: osx
-osx_image: xcode10
+osx_image: xcode10.2
 sudo: true
 
 addons:
@@ -8,7 +9,7 @@ addons:
     taps:
       - jahrme/lilypond
     casks:
-      - basictex
+      - mactex-no-gui
       - xquartz
     packages:
       - docbook

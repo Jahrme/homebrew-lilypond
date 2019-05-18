@@ -6,13 +6,18 @@ class FlexAT2537 < Formula
 
   keg_only :provided_by_macos, "some formulae require a newer version of flex"
 
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+
   depends_on "gettext"
+  depends_on "texinfo"
 
   def install
     args = [
       "--disable-dependency-tracking",
       "--prefix=#{prefix}",
     ]
+    system "./autogen.sh"
     system "./configure", *args
     system "make", "all"
     system "make", "install"
