@@ -1,0 +1,42 @@
+os: osx
+osx_image: xcode10
+sudo: true
+
+addons:
+  homebrew:
+    update: true
+    taps:
+      - jahrme/lilypond
+    casks:
+      - basictex
+      - xquartz
+    packages:
+      - docbook
+      - extractpdfmark
+      - flex@2.5.37
+      - fondu
+      - fontconfig
+      - fontforge
+      - freetype
+      - gcc@7
+      - gettext
+      - ghostscript
+      - gnu-sed
+      - guile@1.8
+      - imagemagick
+      - mftrace
+      - netpbm
+      - pango
+      - pkg-config
+      - poppler
+      - t1utils
+      - texi2html
+      - texinfo
+      - texlive-ly
+
+before_script:
+  - tlmgr update --self
+  - tlmgr update --all
+
+script:
+  - build-lilypond.sh
