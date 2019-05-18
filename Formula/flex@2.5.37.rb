@@ -11,13 +11,21 @@ class FlexAT2537 < Formula
 
   depends_on "gettext"
   depends_on "texinfo"
+  depends_on "gnu-sed"
 
   def install
+    # "I couldn't get texi2dvi to successfully process the documentation
+    # (it made the build process choke and die) so I deke out that part of the
+    # build. I also skip building the test directory." Source: 
+    # https://danieljohnson.name/blog/installing-lilypond-on-macos
+    system "gsed -i -e '/doc \\/d' -e '/tests/d' -e 's/tools \\/tools/' Makefile.am"
+    system "gsed -i -e '/doc\/Makefile/d' -e '/tests\/Makefile/d' -e '/tests\/.*\/Makefile/d' configure.in"
+    # Release did not run autotools, so we have to.
+    system "./autogen.sh"
     args = [
       "--disable-dependency-tracking",
       "--prefix=#{prefix}",
     ]
-    system "./autogen.sh"
     system "./configure", *args
     system "make", "all"
     system "make", "install"
