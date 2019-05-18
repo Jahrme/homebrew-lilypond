@@ -18,8 +18,8 @@ class FlexAT2537 < Formula
     # (it made the build process choke and die) so I deke out that part of the
     # build. I also skip building the test directory." Source: 
     # https://danieljohnson.name/blog/installing-lilypond-on-macos
-    system "gsed -i -e '/doc \\\/d' -e '/tests/d' -e 's/tools \\\/tools/' Makefile.am"
-    system "gsed -i -e '/doc\/Makefile/d' -e '/tests\/Makefile/d' -e '/tests\/.*\/Makefile/d' configure.in"
+    system "gsed -i -e '/doc \\\\/d' -e '/tests/d' -e 's/tools \\\\/tools/' Makefile.am"
+    system "gsed -i -e '/doc\\/Makefile/d' -e '/tests\\/Makefile/d' -e '/tests\\/.*\\/Makefile/d' configure.in"
     # Release did not run autotools, so we have to.
     system "./autogen.sh"
     args = [
