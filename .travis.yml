@@ -34,8 +34,8 @@ addons:
       - texinfo
 
 before_script:
-  - tlmgr update --self
-  - tlmgr update --all
+  - /Library/TeX/texbin/tlmgr update --self
+  - /Library/TeX/texbin/tlmgr update --all
 
 script:
   - build-lilypond.sh
