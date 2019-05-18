@@ -29,11 +29,9 @@ addons:
       - netpbm
       - pango
       - pkg-config
-      - poppler
       - t1utils
       - texi2html
       - texinfo
-      - texlive-ly
 
 before_script:
   - tlmgr update --self
