@@ -7,7 +7,7 @@ class TexliveLy < Formula
 
   depends_on :x11
 
-  programs = [
+  @@programs = [
     "kpsewhich",
     "mf",
     "mf-nowin",
@@ -22,7 +22,7 @@ class TexliveLy < Formula
   def install
     bin.mkpath
     texbin = "/Library/TeX/texbin"
-    programs.each do |prog|
+    @@programs.each do |prog|
       ln_sf "#{texbin}/#{prog}", "#{bin}/#{prog}"
     end
   end
@@ -42,7 +42,7 @@ class TexliveLy < Formula
   end
 
   test do
-    programs.each do |prog|
+    @@programs.each do |prog|
       system "#{bin}/#{prog}", "--version"
     end
   end
